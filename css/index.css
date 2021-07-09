@@ -2,6 +2,10 @@
 
 @import url(./genre.css);
 @import url(./movie.css);
+@import url(./modal.css);
+@import url(./movieDetail.css);
+@import url(./suggest.css);
+
 
 html{
     font-family: 'Source Sans Pro', sans-serif;
@@ -12,13 +16,9 @@ html{
 main {
     padding: 20px;
 }
-.notice {
-    font-size: 23px;
-    margin-bottom: 20px;
-}
 
 .cover {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 0;

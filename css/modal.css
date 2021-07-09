@@ -1,0 +1,31 @@
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(50, 50, 50, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.modal { 
+    position: fixed;
+    background: rgb(24, 24, 24);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 15px;
+    box-sizing: border-box;
+    animation: padeIn .2s cubic-bezier(0,0,0,1);
+
+    display: flex;
+}
+
+@keyframes padeIn {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

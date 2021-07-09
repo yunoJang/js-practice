@@ -1,0 +1,28 @@
+.suggestion {
+    width: 25%;
+    color: white;
+}
+.suggestion>h1 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.suggestion ul {
+    display: flex;
+    flex-direction: column;
+}
+.suggestion li {
+    display: flex;
+    cursor: pointer;
+}
+    .suggestion li+li {
+        margin-top: 20px;
+    }
+
+.suggestion img {
+    height: 150px ;
+    margin-right: 10px;
+}
+.suggestion li>h1 {
+    font-size: 18px;
+}

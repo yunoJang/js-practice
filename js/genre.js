@@ -1,41 +1,36 @@
+import {paintMovies} from './movie.js';
+
 const genreList = document.querySelector('.genre-list');
-const movieList = document.querySelector('.movie-list');
-
-const genres = ['Comedy','Drama','Crime','Thriller','Horror','SCI-FI','Action','Romance','Animation'];
-
-const ACTIVE_CLASSNAME = 'active';
-
 const cover = document.createElement('div');
 cover.classList.add('cover');
 
+const ACTIVE_CLASSNAME = 'active';
+
+const cacheMovie = new Map();
+
 async function loadMovies(genre) {
-    const response = await fetch(`https://yts-proxy.now.sh/list_movies.json?genre=${genre}&limit=10`);
-    const {data:{movies}} = await response.json();
+    if (!cacheMovie.has(genre)) {
+        const response = await fetch(`https://yts-proxy.now.sh/list_movies.json?genre=${genre}&limit=15&sort_by=rating`);
+        const {data:{movies}} = await response.json();
 
-    return movies;
-}
+        cacheMovie.set(genre,movies);
+    }
 
-function paintMovie(movie) {
-    const src = movie.medium_cover_image;
-    const li = document.createElement('li');
-    const img = new Image();
-    img.src = src;
-
-    li.append(img);
-    movieList.append(li);
+    return cacheMovie.get(genre);
 }
 
 async function onGenreClick(e) {
     const genre = e.target.textContent;
 
-    for (const li of genreList.children) li.classList.remove(ACTIVE_CLASSNAME);
+    for (const li of genreList.children) {
+        li.classList.remove(ACTIVE_CLASSNAME);
+    }
     e.target.classList.add(ACTIVE_CLASSNAME);
 
     document.body.append(cover);
 
     const movies = await loadMovies(genre);
-    movieList.innerHTML = '';
-    movies.forEach(paintMovie);
+    paintMovies({movies});
 
     cover.remove();
 }
@@ -48,4 +43,6 @@ function paintGenre(genre) {
     genreList.append(li);
 }
 
-genres.forEach(paintGenre);
+export function paintGenres({genres}) {
+    genres.forEach(paintGenre);
+}

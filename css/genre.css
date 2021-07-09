@@ -1,12 +1,15 @@
-
+.genre-container>h1 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
 .genre-list {
     display: flex;
     margin-bottom: 20px;
 }
 .genre-list>li {
     cursor: pointer;
-    padding: 8px 15px;
-    border-radius: 47%;
+    padding: 10px 15px;
+    border-radius: 45%;
     background: #fff;    
     transition: 0.2s cubic-bezier(0,0,0,1);
 }
@@ -14,8 +17,8 @@
         margin-left: 8px;
     }
     .genre-list>li:hover {
-        border-radius: 0;
+        background: #ddd;
     }
     .genre-list>li.active {
-        box-shadow: 0 0 0 3px #888 inset;
+        box-shadow: 0 0 0 2px #46a144 inset;
     }
