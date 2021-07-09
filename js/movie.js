@@ -5,7 +5,6 @@ import {createSuggestion} from './suggest.js';
 const movieList = document.querySelector('.movie-container ul');
 
 export async function onMovieClick(movie) {
-    console.log(movie);
     const modal = new Modal();
 
     modal.append(createDetail(movie));

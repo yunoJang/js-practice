@@ -7,9 +7,16 @@ async function loadMovies(id) {
     return movies;
 }
 
+function onSuggestionClick(movie,e) {
+    const modal = e.target.closest('.overlay');
+
+    modal.remove();
+    onMovieClick(movie);
+}
+
 function createList(movie) {
     const li = document.createElement('li');
-    li.addEventListener('click',onMovieClick.bind(null,movie))
+    li.addEventListener('click',onSuggestionClick.bind(null,movie))
     const img = new Image();
     const h1 = document.createElement('h1');
 
